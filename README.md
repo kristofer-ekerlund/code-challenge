@@ -1,5 +1,35 @@
 # Next.js Infinite Scroll Frontend
 
+#Preface
+
+I’ll get straight to the point: I used Claude Code CLI and Cursor extensively to complete this project. Recently, I’ve had the privilege of spending a lot of time working with these tools, and I couldn’t resist making full use of them. I’m not a pure front-end developer, but I have a lot of experience with Vue and have also studied and practiced React to a fair extent. I also challenged several of the instructions — for example, I didn’t change anything in the repository I cloned, but used it purely as a reference.
+
+There are still a number of issues with the solution that need to be fixed (I actually asked Claude to perform two reviews with suggestions for future improvements). I simply didn’t have the time to write unit tests, E2E tests, and so on. Normally, I’m someone who really values having tests in a project, because it gives you confidence that your code won’t break the entire production environment.
+
+My process looked like this:
+
+Create a clean project with both front-end and back-end.
+
+Explore how I could save time and energy by using existing solutions instead of reinventing the wheel. (Yes, I genuinely believe that well-maintained, reasonably lightweight packages can sometimes be better than building everything from scratch.)
+
+Use Claude Code to generate a working foundation.
+
+Iterate on the components, polishing them and adding features like sessions.
+
+Forget to make many commits…
+
+Realize that time is running out and that the project is “good enough for now.”
+
+I am fully aware that the Docker files, deployment workflows, etc., are missing entirely — those are things to build upon later.
+
+One possible direction moving forward would be to run the services in GCP Cloud Run with Cloud SQL, using a VPC where the “front-end” API can communicate with the back-end, which would reduce exposure of the back-end.
+
+Additionally, I could have introduced a cache layer (e.g., Redis with precomputed queries to reduce database load).
+
+And yes — I should probably have used a different type of query for the database. Using a transaction for this read operation is somewhat unnecessary… but let’s just leave it as it is.
+
+And i also didn't have time to implement database migrations and seeders.
+
 Modern e-commerce product listing with infinite scroll and virtual rendering, built with Next.js 15, React 19, and TanStack Virtual.
 
 ## Tech Stack
