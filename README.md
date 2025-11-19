@@ -1,6 +1,6 @@
 # Next.js Infinite Scroll Frontend
 
-#Preface
+## Preface
 
 I’ll get straight to the point: I used Claude Code CLI and Cursor extensively to complete this project. Recently, I’ve had the privilege of spending a lot of time working with these tools, and I couldn’t resist making full use of them. I’m not a pure front-end developer, but I have a lot of experience with Vue and have also studied and practiced React to a fair extent. I also challenged several of the instructions — for example, I didn’t change anything in the repository I cloned, but used it purely as a reference.
 
