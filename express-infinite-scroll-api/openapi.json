@@ -84,13 +84,13 @@
           {
             "name": "cursor",
             "in": "query",
-            "description": "Product ID to start fetching after. Omit to start from the beginning.",
+            "description": "Product ID (UUID) to start fetching after. Omit to start from the beginning.",
             "required": false,
             "schema": {
-              "type": "integer",
-              "minimum": 0
+              "type": "string",
+              "format": "uuid"
             },
-            "example": 42
+            "example": "9d1bcdd6-ea7e-4a2f-922e-b1375b7a39cd"
           },
           {
             "name": "limit",
@@ -256,43 +256,51 @@
     "schemas": {
       "Product": {
         "type": "object",
-        "required": ["id", "name", "price", "createdAt"],
+        "required": ["id", "name", "price"],
         "properties": {
           "id": {
-            "type": "integer",
-            "description": "Unique product identifier",
-            "example": 1
+            "type": "string",
+            "format": "uuid",
+            "description": "Unique product identifier (UUID)",
+            "example": "9d1bcdd6-ea7e-4a2f-922e-b1375b7a39cd"
           },
           "name": {
             "type": "string",
             "description": "Product name",
             "maxLength": 255,
-            "example": "Product 1"
+            "example": "Electronic Granite Mouse"
           },
           "description": {
             "type": "string",
             "nullable": true,
             "description": "Product description",
-            "example": "Description for product 1"
+            "example": "Our golden-inspired Bacon brings a taste of luxury to your all lifestyle"
           },
           "price": {
             "type": "string",
             "description": "Product price in decimal format",
             "pattern": "^\\d+\\.\\d{2}$",
-            "example": "366.24"
+            "example": "273.00"
           },
-          "imageUrl": {
+          "image_url": {
             "type": "string",
             "nullable": true,
             "description": "URL to product image",
-            "maxLength": 512,
-            "example": "https://picsum.photos/seed/1/200"
+            "maxLength": 500,
+            "example": "https://picsum.photos/seed/9d1bcdd6-ea7e-4a2f-922e-b1375b7a39cd/800/800"
           },
-          "createdAt": {
+          "category": {
             "type": "string",
-            "format": "date-time",
-            "description": "Timestamp when the product was created",
-            "example": "2025-11-18T10:23:55.000Z"
+            "nullable": true,
+            "description": "Product category",
+            "maxLength": 100,
+            "example": "Garden"
+          },
+          "stock_quantity": {
+            "type": "integer",
+            "description": "Available stock quantity",
+            "default": 0,
+            "example": 74
           }
         }
       },
@@ -308,10 +316,11 @@
             }
           },
           "nextCursor": {
-            "type": "integer",
+            "type": "string",
+            "format": "uuid",
             "nullable": true,
-            "description": "ID of the next cursor for pagination, null if no more items",
-            "example": 21
+            "description": "UUID of the next cursor for pagination, null if no more items",
+            "example": "042ab037-c866-4044-82bb-0aa1b5b4ce73"
           }
         }
       },
