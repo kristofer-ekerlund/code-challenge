@@ -1,5 +1,7 @@
 import React from "react";
+import Image from "next/image";
 import type { Product } from "../types/product";
+import { shimmer, toBase64 } from "../utils/imageHelpers";
 
 /**
  * Props for the ProductCard component
@@ -46,11 +48,14 @@ export function ProductCard({ product, innerRef }: ProductCardProps) {
         {/* Product Image */}
         <div className="relative aspect-square w-full overflow-hidden bg-slate-100">
           {product.imageUrl ? (
-            <img
+            <Image
               src={product.imageUrl}
               alt={product.name}
-              className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-              loading="lazy"
+              fill
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              className="object-cover transition-transform duration-300 group-hover:scale-105"
+              placeholder="blur"
+              blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(800, 800))}`}
             />
           ) : (
             <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-slate-100 to-slate-200">

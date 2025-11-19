@@ -54,8 +54,12 @@ async function fetchProducts(
     pageSize: pageSize.toString(),
   });
 
-  if (sortBy) params.append('sortBy', sortBy);
-  if (sortOrder) params.append('sortOrder', sortOrder);
+  if (sortBy) {
+    params.append('sortBy', sortBy);
+  }
+  if (sortOrder) {
+    params.append('sortOrder', sortOrder);
+  }
 
   const res = await fetch(`${endpoint}?${params.toString()}`);
   if (!res.ok) {
